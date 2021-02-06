@@ -10,6 +10,7 @@ class CardPage extends Component {
     this.getCardIfExists = this.getCardIfExists.bind(this);
     this.state = {
       card: null,
+      hasLoaded: false,
     }
   }
 
@@ -35,8 +36,10 @@ class CardPage extends Component {
 
         const card = result.card
 
+        this.setState({card: null});
         this.setState({
           card: card,
+          hasLoaded: true,
         });
       }
 
@@ -59,17 +62,21 @@ class CardPage extends Component {
 
   render() {
 
-    const { card } = this.state;
+    const { card, hasLoaded } = this.state;
 
-    if (card) {
-      return (
-        < CardDetails card={card}
-                      updateCard={this.updateCard}/>
-      )
+    if (hasLoaded) {
+      if (card) {
+        return (
+          < CardDetails card={card}
+                        updateCard={this.updateCard}/>
+        )
+      } else {
+        return (
+          < CreateCard updateCard={this.updateCard} />
+        )
+      }
     } else {
-      return (
-        < CreateCard updateCard={this.updateCard} />
-      )
+      return <p>Loading...</p>
     }
   };
 

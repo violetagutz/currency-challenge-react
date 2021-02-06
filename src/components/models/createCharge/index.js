@@ -34,11 +34,13 @@ class CreateCharge extends Component {
       const result = await response.json();
 
       if (result && result.id) {
-        const chargeId = result.id;
-        this.props.updateCardFromCharge();
 
+        const chargeId = result.id
+
+        this.props.updateCardFromCharge();
       }
-    } catch(e) {
+    }
+    catch(e) {
       if (e instanceof TypeError) {
         console.error("API response error")
         console.error(e);
