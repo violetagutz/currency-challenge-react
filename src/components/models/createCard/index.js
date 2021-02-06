@@ -34,7 +34,6 @@ class CreateCard extends Component {
       const result = await response.json();
 
       if (result && result.card_id) {
-        console.log("im in child component")
         this.props.updateCard();
       }
 

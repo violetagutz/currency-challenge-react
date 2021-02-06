@@ -63,7 +63,8 @@ class CardPage extends Component {
 
     if (card) {
       return (
-        < CardDetails card={card} />
+        < CardDetails card={card}
+                      updateCard={this.updateCard}/>
       )
     } else {
       return (
