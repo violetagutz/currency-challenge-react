@@ -6,7 +6,6 @@ import CardDetails from '../../models/card/details';
 class CardPage extends Component {
   constructor(props) {
     super(props);
-    console.log("im in the card Page constructor!")
     this.updateCard = this.updateCard.bind(this);
     this.getCardIfExists = this.getCardIfExists.bind(this);
     this.state = {
@@ -15,7 +14,6 @@ class CardPage extends Component {
   }
 
   async getCardIfExists() {
-    console.log("Im in the getCardIfExist")
 
     const { REACT_APP_API_URL } = process.env
 
@@ -36,8 +34,6 @@ class CardPage extends Component {
       if (result && result.card) {
 
         const card = result.card
-        console.log("result card")
-        console.log(card)
 
         this.setState({
           card: card,
@@ -54,23 +50,16 @@ class CardPage extends Component {
   };
 
   componentDidMount() {
-    console.log("im in componentdid mount")
     this.getCardIfExists();
   }
 
-  updateCard(card) {
-    console.log("get the card from the child create component")
-    console.log(card)
-    this.setState({
-      card: card,
-    })
+  updateCard() {
+    this.getCardIfExists();
   }
 
   render() {
 
     const { card } = this.state;
-    console.log(card)
-    console.log("render card")
 
     if (card) {
       return (

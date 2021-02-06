@@ -33,11 +33,9 @@ class CreateCard extends Component {
 
       const result = await response.json();
 
-      if (result && result.card) {
-        const card = result.card
-        console.log(card)
+      if (result && result.card_id) {
         console.log("im in child component")
-        this.props.updateCard(card);
+        this.props.updateCard();
       }
 
     } catch(e) {
@@ -66,6 +64,8 @@ class CreateCard extends Component {
 
   render() {
 
+    const { limit } = this.state;
+
     return(
       <div>
         <Container>
@@ -76,9 +76,8 @@ class CreateCard extends Component {
                 <Form.Group controlid="createCard">
                   <Form.Label>Card Limit</Form.Label>
                   <Form.Control type="number" min="100" max="1000000"
-                    value={this.state.limit/100}
-                    onChange={this.handleLimitChange}
-                    placeholder="enter card limit" />
+                    value={limit ? Number(limit)/100 : ""}
+                    onChange={this.handleLimitChange} />
                   <Button variant="outline-primary"
                     onClick={this.handleSubmit}>Create Card</Button>
                  </Form.Group>
