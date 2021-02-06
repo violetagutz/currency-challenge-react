@@ -41,6 +41,10 @@ class CardPage extends Component {
           card: card,
           hasLoaded: true,
         });
+      } else {
+        this.setState({
+          hasLoaded: true,
+        });
       }
 
     } catch(e) {
