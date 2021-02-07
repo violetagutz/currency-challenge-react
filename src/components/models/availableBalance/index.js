@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Currency from '../../../helpers/currency';
+import { Card } from 'react-bootstrap';
 
 class AvailableBalance extends Component {
   constructor(props) {
@@ -56,9 +57,7 @@ class AvailableBalance extends Component {
     const { available_balance } = this.state
 
     return(
-      <div>
-        <h2> Available balance: {Currency.toDollars(available_balance)} </h2>
-      </div>
+      <Card.Text> Available balance: {Currency.toDollars(available_balance)} </Card.Text>
     )
   };
 
