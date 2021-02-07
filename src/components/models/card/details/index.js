@@ -15,8 +15,8 @@ class CardDetails extends Component {
     return (
       <div>
         <h1> Card details </h1>
-        <h2> Card ID: {card.id} </h2>
-        <h2> limit: {Currency.toDollars(card.limit)} </h2>
+        <h2> Limit: {Currency.toDollars(card.limit)} </h2>
+        <h2> Total Usage: {Currency.toDollars(card.total_usage)}</h2>
         < AvailableBalance cardId={card.id} />
         < CreateCharge cardId={card.id}
                        updateCardFromCharge={updateCard}/>

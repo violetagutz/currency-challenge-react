@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Button, Form, Card } from 'react-bootstrap';
+import { Container, Button, Form, Card, Alert } from 'react-bootstrap';
 
 class CreateCharge extends Component {
   constructor(props) {
@@ -9,6 +9,7 @@ class CreateCharge extends Component {
     this.handleLimitChange = this.handleLimitChange.bind(this);
     this.state = {
       amount: null,
+      error: false
     }
   }
 
@@ -34,10 +35,10 @@ class CreateCharge extends Component {
       const result = await response.json();
 
       if (result && result.id) {
-
-        const chargeId = result.id
-
         this.props.updateCardFromCharge();
+
+      } else {
+        this.setState({error: result.error})
       }
     }
     catch(e) {
@@ -66,7 +67,7 @@ class CreateCharge extends Component {
 
   render() {
 
-    const { amount } = this.state
+    const { amount, error } = this.state
 
     return(
       <div>
@@ -74,10 +75,13 @@ class CreateCharge extends Component {
           <Card>
             <Card.Body>
               <Card.Title> Create Charge </Card.Title>
+              {error &&
+                <Alert variant="danger">{error}</Alert>
+              }
               <Form>
                 <Form.Group controlid="createCharge">
                   <Form.Label>Charge amount</Form.Label>
-                  <Form.Control type="number" min="100" max="1000000"
+                  <Form.Control required type="number" min="100" max="1000000"
                     value={amount ? Number(amount)/100 : ""}
                     onChange={this.handleLimitChange} />
                   <Button variant="outline-primary"
