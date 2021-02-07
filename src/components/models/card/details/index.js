@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CreateCharge from '../../createCharge';
 import AvailableBalance from '../../availableBalance';
+import DeleteCard from '../../deleteCard';
 import Currency from '../../../../helpers/currency';
 
 class CardDetails extends Component {
@@ -19,7 +20,8 @@ class CardDetails extends Component {
         <h2> Total Usage: {Currency.toDollars(card.total_usage)}</h2>
         < AvailableBalance cardId={card.id} />
         < CreateCharge cardId={card.id}
-                       updateCardFromCharge={updateCard}/>
+                       updateCardFromCharge={updateCard} />
+        < DeleteCard cardId={card.id} />
       </div>
     )
   };

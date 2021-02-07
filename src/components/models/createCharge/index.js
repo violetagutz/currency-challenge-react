@@ -81,7 +81,7 @@ class CreateCharge extends Component {
               <Form>
                 <Form.Group controlid="createCharge">
                   <Form.Label>Charge amount</Form.Label>
-                  <Form.Control required type="number" min="100" max="1000000"
+                  <Form.Control required type="number"
                     value={amount ? Number(amount)/100 : ""}
                     onChange={this.handleLimitChange} />
                   <Button variant="outline-primary"

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Button, Form, Card } from 'react-bootstrap';
+import { Container, Button, Form, Card, Alert } from 'react-bootstrap';
 
 class CreateCard extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class CreateCard extends Component {
     this.handleLimitChange = this.handleLimitChange.bind(this);
     this.state = {
       limit: 10000,
+      error: false,
     }
 
   }
@@ -35,6 +36,8 @@ class CreateCard extends Component {
 
       if (result && result.card_id) {
         this.props.updateCard();
+      } else {
+        this.setState({error: result.error})
       }
 
     } catch(e) {
@@ -63,7 +66,7 @@ class CreateCard extends Component {
 
   render() {
 
-    const { limit } = this.state;
+    const { limit, error } = this.state;
 
     return(
       <div>
@@ -71,6 +74,9 @@ class CreateCard extends Component {
           <Card>
             <Card.Body>
               <Card.Title> Create Credit Card </Card.Title>
+              {error &&
+                <Alert variant="danger">{error}</Alert>
+              }
               <Form>
                 <Form.Group controlid="createCard">
                   <Form.Label>Card Limit</Form.Label>
