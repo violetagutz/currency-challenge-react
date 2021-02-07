@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Button, Form, Card, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 class DeleteCard extends Component {
   constructor(props) {
@@ -47,8 +46,8 @@ class DeleteCard extends Component {
 
     return(
       <div>
-        <Button variant="outline-primary"
-          onClick={this.deleteCard}>Delete Card</Button>
+        <Button variant="outline-danger"
+          onClick={this.deleteCard}>Delete card to start over</Button>
        </div>
     )
   };
