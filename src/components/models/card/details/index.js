@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import CreateCharge from '../../createCharge';
-import AvailableBalance from '../../availableBalance';
 import DeleteCard from '../../deleteCard';
+import AvailableBalance from '../../availableBalance';
 import Currency from '../../../../helpers/currency';
 
 class CardDetails extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
 
     const { card, updateCard } = this.props
@@ -21,7 +17,7 @@ class CardDetails extends Component {
         < AvailableBalance cardId={card.id} />
         < CreateCharge cardId={card.id}
                        updateCardFromCharge={updateCard} />
-        < DeleteCard cardId={card.id} />
+        < DeleteCard updateCardFromDelete={updateCard}/>
       </div>
     )
   };

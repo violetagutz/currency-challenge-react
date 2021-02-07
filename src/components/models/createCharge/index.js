@@ -9,7 +9,8 @@ class CreateCharge extends Component {
     this.handleLimitChange = this.handleLimitChange.bind(this);
     this.state = {
       amount: null,
-      error: false
+      error: false,
+      createdAt: null,
     }
   }
 
@@ -35,6 +36,11 @@ class CreateCharge extends Component {
       const result = await response.json();
 
       if (result && result.id) {
+
+        const createdAt = result.created_at
+        this.setState({
+          createdAt: createdAt,
+        })
         this.props.updateCardFromCharge();
 
       } else {
@@ -67,7 +73,7 @@ class CreateCharge extends Component {
 
   render() {
 
-    const { amount, error } = this.state
+    const { amount, error, createdAt } = this.state
 
     return(
       <div>
@@ -86,6 +92,8 @@ class CreateCharge extends Component {
                     onChange={this.handleLimitChange} />
                   <Button variant="outline-primary"
                     onClick={this.handleSubmit}>Create </Button>
+                  <p>{amount}</p>
+                  <p>{createdAt}</p>
                  </Form.Group>
                </Form>
              </Card.Body>

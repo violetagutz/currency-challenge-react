@@ -1,16 +1,21 @@
 import React, {Component} from 'react';
 import { Container, Button, Form, Card, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class DeleteCard extends Component {
   constructor(props) {
     super(props);
+    this.deleteCard = this.deleteCard.bind(this);
+
   }
 
-  async deleteCard(e, cardId) {
+  async deleteCard(e) {
+
+    e.preventDefault();
 
     const { REACT_APP_API_URL } = process.env
 
-    const url = `${ REACT_APP_API_URL }/delete?id=${cardId}`;
+    const url = `${ REACT_APP_API_URL }/delete`;
 
     const settings = {
       method: 'DELETE',
@@ -23,6 +28,10 @@ class DeleteCard extends Component {
       const response = await fetch(url, settings)
 
       const result = await response.json();
+
+      if (result.deleted) {
+        this.props.updateCardFromDelete();
+      }
 
     } catch(e) {
       if (e instanceof TypeError) {
@@ -39,7 +48,7 @@ class DeleteCard extends Component {
     return(
       <div>
         <Button variant="outline-primary"
-          onClick={(e, cardId) => this.deleteCard(e, this.props.cardId)}>Try again</Button>
+          onClick={this.deleteCard}>Delete Card</Button>
        </div>
     )
   };

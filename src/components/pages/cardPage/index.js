@@ -44,6 +44,7 @@ class CardPage extends Component {
       } else {
         this.setState({
           hasLoaded: true,
+          card: null,
         });
       }
 
@@ -71,12 +72,16 @@ class CardPage extends Component {
     if (hasLoaded) {
       if (card) {
         return (
-          < CardDetails card={card}
-                        updateCard={this.updateCard}/>
+          <div>
+            < CardDetails card={card}
+                          updateCard={this.updateCard} />
+          </div>
         )
       } else {
         return (
-          < CreateCard updateCard={this.updateCard} />
+          <div>
+            < CreateCard updateCard={this.updateCard} />
+          </div>
         )
       }
     } else {
