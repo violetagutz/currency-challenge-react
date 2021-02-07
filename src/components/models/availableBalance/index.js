@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Currency from '../../../helpers/currency';
 
 class AvailableBalance extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class AvailableBalance extends Component {
 
     return(
       <div>
-        <h2> Available balance: ${(available_balance/100).toFixed(2)} </h2>
+        <h2> Available balance: {Currency.toDollars(available_balance)} </h2>
       </div>
     )
   };
