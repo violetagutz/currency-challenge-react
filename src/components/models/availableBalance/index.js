@@ -12,9 +12,7 @@ class AvailableBalance extends Component {
 
   async getAvailableBalance(cardId) {
 
-    const { REACT_APP_API_URL } = process.env
-
-    const url = `${ REACT_APP_API_URL }/card/available_balance?id=${cardId}`;
+    const url = `https://sequin-creditcard-api.herokuapp.com/card/available_balance?id=${cardId}`;
 
     const settings = {
       method: 'GET',

@@ -12,9 +12,7 @@ class DeleteCard extends Component {
 
     e.preventDefault();
 
-    const { REACT_APP_API_URL } = process.env
-
-    const url = `${ REACT_APP_API_URL }/delete`;
+    const url = `https://sequin-creditcard-api.herokuapp.com/delete`;
 
     const settings = {
       method: 'DELETE',

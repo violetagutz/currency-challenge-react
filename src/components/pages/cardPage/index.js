@@ -15,9 +15,7 @@ class CardPage extends Component {
 
   async getCardIfExists() {
 
-    const { REACT_APP_API_URL } = process.env
-
-    const url = `${ REACT_APP_API_URL }/get_card`;
+    const url = `https://sequin-creditcard-api.herokuapp.com/get_card`;
 
     const settings = {
       method: 'GET',

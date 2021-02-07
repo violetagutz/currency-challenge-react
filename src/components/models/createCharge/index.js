@@ -15,9 +15,7 @@ class CreateCharge extends Component {
 
   async createCharge() {
 
-    const { REACT_APP_API_URL } = process.env
-
-    const url = `${ REACT_APP_API_URL }/charge/create`;
+    const url = `https://sequin-creditcard-api.herokuapp.com/charge/create`;
 
     const settings = {
       method: 'POST',

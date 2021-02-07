@@ -17,9 +17,7 @@ class CreateCard extends Component {
 
   async createCard() {
 
-    const { REACT_APP_API_URL } = process.env
-
-    const url = `${ REACT_APP_API_URL }/card/create`;
+    const url = `https://sequin-creditcard-api.herokuapp.com/card/create`;
 
     const settings = {
       method: 'POST',
