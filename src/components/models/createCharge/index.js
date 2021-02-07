@@ -69,28 +69,25 @@ class CreateCharge extends Component {
     const { amount, error } = this.state
 
     return(
-      <div>
-        <Container>
-          <Card>
-            <Card.Body>
-              <Card.Title> Create Charge </Card.Title>
-              {error &&
-                <Alert variant="danger">{error}</Alert>
-              }
-              <Form>
-                <Form.Group controlid="createCharge">
-                  <Form.Label>Charge amount</Form.Label>
-                  <Form.Control required type="number"
-                    value={amount ? Number(amount)/100 : ""}
-                    onChange={this.handleLimitChange} />
-                  <Button variant="outline-primary"
-                    onClick={this.handleSubmit}>Create </Button>
-                 </Form.Group>
-               </Form>
-             </Card.Body>
-          </Card>
-        </Container>
-       </div>
+      <Card className="create-charge-card">
+        <Card.Header> Create Charge </Card.Header>
+        <Card.Body>
+          {error &&
+            <Alert variant="danger">{error}</Alert>
+          }
+          <Form>
+            <Form.Group controlid="createCharge">
+              <Form.Label>Charge amount</Form.Label>
+              <Form.Control required type="number"
+                value={amount ? Number(amount)/100 : ""}
+                onChange={this.handleLimitChange} />
+              <Button className="create-charge-submit-button"
+                variant="outline-primary"
+                onClick={this.handleSubmit}>Create </Button>
+             </Form.Group>
+           </Form>
+         </Card.Body>
+      </Card>
     )
   };
 

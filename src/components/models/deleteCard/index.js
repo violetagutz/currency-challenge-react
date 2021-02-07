@@ -43,10 +43,8 @@ class DeleteCard extends Component {
   render() {
 
     return(
-      <div>
-        <Button variant="outline-danger"
-          onClick={this.deleteCard}>Delete card to start over</Button>
-       </div>
+      <Button variant="outline-danger"
+        onClick={this.deleteCard}>Delete card to start over</Button>
     )
   };
 
