@@ -16,7 +16,6 @@ class CreateCharge extends Component {
   async createCharge() {
 
     const { REACT_APP_API_URL } = process.env
-
     const url = `${ REACT_APP_API_URL }/charge/create`;
 
     const settings = {
@@ -29,9 +28,7 @@ class CreateCharge extends Component {
     };
 
     try {
-
       const response = await fetch(url, settings)
-
       const result = await response.json();
 
       if (result && result.id) {
@@ -44,8 +41,7 @@ class CreateCharge extends Component {
     }
     catch(e) {
       if (e instanceof TypeError) {
-        console.error("API response error")
-        console.error(e);
+        // Alert tech team of issue
         alert("Oops something went wrong. Please try again soon.");
       }
     }

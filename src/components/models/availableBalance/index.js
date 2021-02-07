@@ -14,7 +14,6 @@ class AvailableBalance extends Component {
   async getAvailableBalance(cardId) {
 
     const { REACT_APP_API_URL } = process.env
-
     const url = `${ REACT_APP_API_URL }/card/available_balance?id=${cardId}`;
 
     const settings = {
@@ -40,8 +39,7 @@ class AvailableBalance extends Component {
 
     } catch(e) {
       if (e instanceof TypeError) {
-        console.error("API response error")
-        console.error(e);
+        // alert tech team of issue
         alert("Oops something went wrong. Please try again soon.");
       }
     }

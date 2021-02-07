@@ -18,7 +18,6 @@ class CreateCard extends Component {
   async createCard() {
 
     const { REACT_APP_API_URL } = process.env
-
     const url = `${ REACT_APP_API_URL }/card/create`;
 
     const settings = {
@@ -31,7 +30,6 @@ class CreateCard extends Component {
 
     try {
       const response = await fetch(url, settings)
-
       const result = await response.json();
 
       if (result && result.card_id) {
@@ -42,8 +40,7 @@ class CreateCard extends Component {
 
     } catch(e) {
       if (e instanceof TypeError) {
-        console.error("API response error")
-        console.error(e);
+        // alert tech team here
         alert("Oops something went wrong. Please try again soon.");
       }
     }
